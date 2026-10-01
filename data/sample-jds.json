@@ -1,0 +1,26 @@
+[
+  {
+    "id": "frontend-senior",
+    "title": "Senior Frontend Developer (React / TypeScript)",
+    "company": "TechScale Solutions",
+    "text": "We are seeking a passionate Senior Frontend Developer to lead our client-facing web application development. \n\nKey Responsibilities:\n- Build scalable, responsive web applications using React, TypeScript, and modern CSS3.\n- Architect state management solutions using Redux and optimize web performance.\n- Collaborate in an Agile / Scrum environment with designers, product managers, and backend engineers.\n- Champion Accessibility (a11y) standards and clean code practices.\n\nRequired Qualifications:\n- 4+ years of professional software development experience.\n- Strong proficiency in JavaScript (ES6+), TypeScript, and HTML5.\n- Hands-on experience with React, REST API integration, and Git.\n- Deep understanding of Responsive Web Design and cross-browser compatibility.\n- Excellent Problem Solving and Communication skills.\n\nPreferred / Nice-to-Have:\n- Experience with Next.js and Tailwind CSS is a plus.\n- Familiarity with CI/CD pipelines, Docker, and Webpack.\n- Knowledge of Automated testing using Jest or Cypress is preferred.\n- Exposure to AWS cloud infrastructure."
+  },
+  {
+    "id": "fullstack-engineer",
+    "title": "Full Stack Engineer (Node.js & React)",
+    "company": "CloudPulse Systems",
+    "text": "CloudPulse Systems is hiring a Full Stack Engineer to build high-performance microservices and intuitive user interfaces.\n\nResponsibilities:\n- Design and implement REST APIs and Microservices using Node.js and Express.js.\n- Develop modern frontend interfaces using React, HTML, and CSS.\n- Work with relational databases like PostgreSQL (SQL) and NoSQL stores like MongoDB.\n- Write clean, maintainable code following TDD and OOP principles.\n\nMust-Have Skills:\n- Required 3+ years experience with JavaScript, Node.js, and Express.\n- Strong expertise in SQL databases, RESTful web services, and Git version control.\n- Proficiency in Teamwork, Adaptability, and Critical Thinking.\n\nBonus Points:\n- Experience with Docker, Kubernetes, and AWS cloud services is a major plus.\n- Knowledge of GraphQL and Redis is nice to have.\n- Background in System Design and CI/CD automated deployments."
+  },
+  {
+    "id": "backend-java",
+    "title": "Backend Software Engineer (Java / Python / Cloud)",
+    "company": "FinData Enterprise",
+    "text": "Join FinData Enterprise as a Backend Engineer focused on real-time data streaming and distributed backend systems.\n\nRequirements:\n- Must have 3+ years writing enterprise code in Java or Python.\n- Essential knowledge of SQL databases, Object-Oriented Programming (OOP), and Data Structures.\n- Proven track record designing REST API architecture and System Design.\n- Required experience with Git, Docker, and Linux Shell / Bash scripts.\n- Excellent verbal and written Communication skills.\n\nNice to Have:\n- Preferred experience with Spring Boot, C++, or Go.\n- Familiarity with Microservices, AWS cloud Services, and Kubernetes is desired.\n- Understanding of Agile methodologies and CI/CD pipelines is a plus."
+  },
+  {
+    "id": "junior-web-dev",
+    "title": "Junior Web Developer / Graduate Switcher",
+    "company": "BrightSpark Digital",
+    "text": "BrightSpark Digital is looking for an enthusiastic Junior Web Developer to join our growing agency team.\n\nRole Overview:\n- Build interactive, mobile-friendly websites using HTML5, CSS3, and JavaScript.\n- Work with UI/UX designers to translate Figma designs into pixel-perfect code.\n- Assist with website maintenance, SEO optimization, and bug fixing.\n\nCore Requirements:\n- Solid understanding of core web fundamentals: HTML, CSS, JavaScript (ES6).\n- Familiarity with Git for code management.\n- Strong Problem Solving, Teamwork, and eagerness for Mentoring and learning.\n\nNice to Have:\n- Basic experience with React or Vue.js is a plus.\n- Exposure to Tailwind CSS or Sass is preferred.\n- Understanding of Web Performance basics."
+  }
+]

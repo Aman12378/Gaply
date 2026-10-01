@@ -1,0 +1,443 @@
+[
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "category": "languages",
+    "synonyms": ["js", "javascript", "ecmascript", "es6", "es6+", "es2015", "es2020", "vanilla js"],
+    "defaultWeight": 5
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "category": "languages",
+    "synonyms": ["ts", "typescript"],
+    "defaultWeight": 5
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "category": "languages",
+    "synonyms": ["py", "python", "python3"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "java",
+    "name": "Java",
+    "category": "languages",
+    "synonyms": ["java", "jdk", "j2ee"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "cpp",
+    "name": "C++",
+    "category": "languages",
+    "synonyms": ["c++", "cpp", "c plus plus"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "csharp",
+    "name": "C#",
+    "category": "languages",
+    "synonyms": ["c#", "c-sharp", "csharp"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "dotnet",
+    "name": ".NET",
+    "category": "tooling",
+    "synonyms": [".net", "dotnet", ".net core", "asp.net", "asp.net core"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "html",
+    "name": "HTML5",
+    "category": "languages",
+    "synonyms": ["html", "html5", "semantic html"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "css",
+    "name": "CSS3",
+    "category": "languages",
+    "synonyms": ["css", "css3", "vanilla css"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "sql",
+    "name": "SQL",
+    "category": "languages",
+    "synonyms": ["sql", "mysql", "postgresql", "postgres", "sqlite", "t-sql", "pl/sql"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "nosql",
+    "name": "NoSQL",
+    "category": "languages",
+    "synonyms": ["nosql", "mongodb", "dynamodb", "couchdb", "cassandra"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "php",
+    "name": "PHP",
+    "category": "languages",
+    "synonyms": ["php", "php7", "php8"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "ruby",
+    "name": "Ruby",
+    "category": "languages",
+    "synonyms": ["ruby", "ruby on rails", "rails"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "go",
+    "name": "Go",
+    "category": "languages",
+    "synonyms": ["go", "golang"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "rust",
+    "name": "Rust",
+    "category": "languages",
+    "synonyms": ["rust", "rustlang"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "swift",
+    "name": "Swift",
+    "category": "languages",
+    "synonyms": ["swift", "swiftui"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "kotlin",
+    "name": "Kotlin",
+    "category": "languages",
+    "synonyms": ["kotlin", "kt"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "bash",
+    "name": "Bash / Shell",
+    "category": "languages",
+    "synonyms": ["bash", "shell", "sh", "zsh", "powershell"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "category": "tooling",
+    "synonyms": ["react", "react.js", "reactjs", "react js"],
+    "defaultWeight": 5
+  },
+  {
+    "id": "vue",
+    "name": "Vue.js",
+    "category": "tooling",
+    "synonyms": ["vue", "vue.js", "vuejs", "vue 3", "vue 2"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "angular",
+    "name": "Angular",
+    "category": "tooling",
+    "synonyms": ["angular", "angularjs", "angular 2+"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js",
+    "category": "tooling",
+    "synonyms": ["node", "node.js", "nodejs", "node js"],
+    "defaultWeight": 5
+  },
+  {
+    "id": "express",
+    "name": "Express.js",
+    "category": "tooling",
+    "synonyms": ["express", "express.js", "expressjs"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "nextjs",
+    "name": "Next.js",
+    "category": "tooling",
+    "synonyms": ["next", "next.js", "nextjs"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "django",
+    "name": "Django",
+    "category": "tooling",
+    "synonyms": ["django", "django framework"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "flask",
+    "name": "Flask",
+    "category": "tooling",
+    "synonyms": ["flask"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "spring",
+    "name": "Spring Boot",
+    "category": "tooling",
+    "synonyms": ["spring", "spring boot", "springboot"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "category": "tooling",
+    "synonyms": ["git", "github", "gitlab", "bitbucket"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "category": "tooling",
+    "synonyms": ["docker", "containerization", "containers"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "kubernetes",
+    "name": "Kubernetes",
+    "category": "tooling",
+    "synonyms": ["k8s", "kubernetes"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "aws",
+    "name": "AWS",
+    "category": "tooling",
+    "synonyms": ["aws", "amazon web services", "ec2", "s3", "lambda"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "azure",
+    "name": "Azure",
+    "category": "tooling",
+    "synonyms": ["azure", "microsoft azure"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "gcp",
+    "name": "Google Cloud",
+    "category": "tooling",
+    "synonyms": ["gcp", "google cloud", "google cloud platform"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "category": "tooling",
+    "synonyms": ["tailwind", "tailwindcss", "tailwind css"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "sass",
+    "name": "Sass / SCSS",
+    "category": "tooling",
+    "synonyms": ["sass", "scss"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "graphql",
+    "name": "GraphQL",
+    "category": "tooling",
+    "synonyms": ["graphql", "gql"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "redux",
+    "name": "Redux",
+    "category": "tooling",
+    "synonyms": ["redux", "redux toolkit", "rtk"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "jest",
+    "name": "Jest",
+    "category": "tooling",
+    "synonyms": ["jest", "unit testing framework"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "cypress",
+    "name": "Cypress",
+    "category": "tooling",
+    "synonyms": ["cypress", "e2e testing"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "webpack",
+    "name": "Webpack",
+    "category": "tooling",
+    "synonyms": ["webpack"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "vite",
+    "name": "Vite",
+    "category": "tooling",
+    "synonyms": ["vite", "vitejs"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "category": "tooling",
+    "synonyms": ["figma", "ui/ux design tools"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "rest_api",
+    "name": "REST API",
+    "category": "concepts",
+    "synonyms": ["rest", "restful", "rest api", "restful api", "rest apis", "restful web services"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "microservices",
+    "name": "Microservices",
+    "category": "concepts",
+    "synonyms": ["microservices", "microservice architecture", "distributed systems"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "agile",
+    "name": "Agile / Scrum",
+    "category": "concepts",
+    "synonyms": ["agile", "scrum", "kanban", "sprints"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "cicd",
+    "name": "CI/CD",
+    "category": "concepts",
+    "synonyms": ["ci/cd", "ci-cd", "continuous integration", "continuous delivery", "continuous deployment"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "system_design",
+    "name": "System Design",
+    "category": "concepts",
+    "synonyms": ["system design", "software architecture", "scalable architecture"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "oop",
+    "name": "OOP",
+    "category": "concepts",
+    "synonyms": ["oop", "object-oriented programming", "object oriented programming"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "functional_programming",
+    "name": "Functional Programming",
+    "category": "concepts",
+    "synonyms": ["functional programming", "fp"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "tdd",
+    "name": "TDD",
+    "category": "concepts",
+    "synonyms": ["tdd", "test-driven development", "test driven development", "unit testing"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "responsive_design",
+    "name": "Responsive Web Design",
+    "category": "concepts",
+    "synonyms": ["responsive design", "responsive web design", "mobile-first", "mobile first"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "state_management",
+    "name": "State Management",
+    "category": "concepts",
+    "synonyms": ["state management", "global state"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "accessibility",
+    "name": "Accessibility (a11y)",
+    "category": "concepts",
+    "synonyms": ["accessibility", "a11y", "wcag", "aria"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "seo",
+    "name": "SEO",
+    "category": "concepts",
+    "synonyms": ["seo", "search engine optimization"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "web_performance",
+    "name": "Web Performance",
+    "category": "concepts",
+    "synonyms": ["performance optimization", "web performance", "core web vitals", "page speed"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "clean_code",
+    "name": "Clean Code",
+    "category": "concepts",
+    "synonyms": ["clean code", "code quality", "refactoring", "solid principles", "dry"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "communication",
+    "name": "Communication",
+    "category": "soft_skills",
+    "synonyms": ["communication", "verbal communication", "written communication", "communication skills"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "teamwork",
+    "name": "Teamwork / Collaboration",
+    "category": "soft_skills",
+    "synonyms": ["teamwork", "collaboration", "cross-functional collaboration", "team player"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "leadership",
+    "name": "Leadership",
+    "category": "soft_skills",
+    "synonyms": ["leadership", "leading", "team lead", "mentorship"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "problem_solving",
+    "name": "Problem Solving",
+    "category": "soft_skills",
+    "synonyms": ["problem-solving", "problem solving", "analytical skills", "critical thinking"],
+    "defaultWeight": 4
+  },
+  {
+    "id": "time_management",
+    "name": "Time Management",
+    "category": "soft_skills",
+    "synonyms": ["time management", "prioritization", "deadline driven", "multitasking"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "mentoring",
+    "name": "Mentoring",
+    "category": "soft_skills",
+    "synonyms": ["mentoring", "coaching", "guiding junior engineers"],
+    "defaultWeight": 3
+  },
+  {
+    "id": "adaptability",
+    "name": "Adaptability",
+    "category": "soft_skills",
+    "synonyms": ["adaptability", "flexibility", "fast learner", "growth mindset"],
+    "defaultWeight": 3
+  }
+]

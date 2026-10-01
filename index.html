@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaply - Find the gap. Build the skill.</title>
+  <meta name="description"
+    content="Gaply: Match your tech profile against job descriptions, uncover skill gaps, track category radar coverage, and generate ATS resume keywords." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo_img.png" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+</head>
+
+<body>
+
+  <!-- Splash / Animated Loading Screen -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo-container">
+        <img src="images/logo_img.png" alt="Gaply Logo" class="splash-logo" />
+      </div>
+      <h1 class="splash-title">Gaply</h1>
+      <p class="splash-tagline">Find the gap. Build the skill.</p>
+      <div class="splash-progress-container">
+        <div id="splash-progress-bar" class="splash-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand-container" id="nav-brand" style="cursor: pointer;" title="Go to Gaply Home">
+      <img src="images/logo_img.png" alt="Gaply Logo" class="brand-logo-img" />
+      <div>
+        <h1 class="brand-title">Gaply</h1>
+        <p class="brand-tagline">Find the gap. Build the skill.</p>
+      </div>
+    </div>
+
+    <!-- Mobile Header Quick Controls -->
+    <div class="mobile-header-controls">
+      <button id="theme-toggle-btn" class="btn btn-outline theme-toggle-btn" title="Toggle Dark / Light theme">
+        🌗 <span class="theme-btn-text">Theme</span>
+      </button>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle-btn" aria-label="Toggle navigation menu" title="Toggle Navigation Menu">
+        <span>☰ Menu</span>
+      </button>
+    </div>
+
+    <!-- Navigation Menu & Actions Drawer Container -->
+    <div id="nav-drawer-container" class="nav-drawer-container">
+      <nav class="nav-menu">
+        <button id="nav-btn-home" class="nav-link active">🏠 Home</button>
+        <button id="nav-btn-analyzer" class="nav-link">🎯 Skill Analyzer</button>
+        <button id="nav-btn-tools" class="nav-link">🛠️ Tools Suite</button>
+      </nav>
+
+      <div class="header-actions">
+        <!-- User Auth Bar -->
+        <div id="auth-buttons-container" class="auth-bar">
+          <button id="open-login-btn" class="btn btn-outline" title="Log into your account">
+            🔐 Log In
+          </button>
+          <button id="open-register-btn" class="btn btn-primary" title="Create a new account">
+            ✨ Register
+          </button>
+        </div>
+
+        <div id="user-profile-bar" class="user-profile-bar" style="display: none;">
+          <div id="user-avatar-chip" class="avatar-chip" title="Click to view/edit profile">
+            <span id="user-avatar-img" class="avatar-img-placeholder">👤</span>
+            <span id="user-display-name" class="user-name-text">Alex Developer</span>
+          </div>
+        </div>
+
+        <button id="open-profile-btn" class="btn btn-outline" title="Edit your skill proficiency profile & credentials">
+          👤 Profile & Resume
+        </button>
+        <button id="open-history-btn" class="btn btn-outline" title="View saved job analyses">
+          📜 History
+        </button>
+        <button id="open-compare-btn" class="btn btn-outline" title="Compare two job descriptions">
+          ⚖️ Compare Roles
+        </button>
+        <button id="export-report-btn" class="btn btn-outline" title="Export analysis report as text file">
+          💾 Export
+        </button>
+        <button id="print-report-btn" class="btn btn-outline" title="Print or save as PDF">
+          🖨️ Print
+        </button>
+
+        <button id="logout-btn" class="btn btn-outline" title="Log out of active account"
+          style="display: none; color: #ef4444; border-color: #ef4444;">
+          🚪 Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Views Container -->
+  <main id="app-main-content">
+
+    <!-- VIEW 1: LANDING & HOME PAGE -->
+    <div id="view-home" class="view-section active">
+
+      <!-- Hero Banner -->
+      <section class="hero-section">
+        <div class="hero-container">
+          <div class="hero-badge">✨ AI-Powered Career & Skill Intelligence</div>
+          <h1 class="hero-title">
+            Find the gap. <br />
+            <span class="gradient-text">Build the skill.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Match your developer proficiency against real job postings instantly. Uncover your top skill gaps, track category radar coverage, create targeted learning checklists, and generate ATS resume keywords.
+          </p>
+
+          <div class="hero-actions">
+            <button id="hero-launch-analyzer-btn" class="btn btn-primary btn-lg">
+              🚀 Launch Skill Gap Analyzer
+            </button>
+            <button id="hero-open-resume-btn" class="btn btn-outline btn-lg">
+              📄 Upload & Preview Resume
+            </button>
+            <button id="hero-compare-roles-btn" class="btn btn-outline btn-lg">
+              ⚖️ Compare Two Roles
+            </button>
+          </div>
+
+          <!-- Hero Metrics Bar -->
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-value">50+</span>
+              <span class="stat-label">Tech & Soft Skills</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">Automated Gap Detection</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">4</span>
+              <span class="stat-label">Radar Skill Categories</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">ATS</span>
+              <span class="stat-label">CV Keyword Generator</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tools Suite Grid Section -->
+      <section id="tools-suite-section" class="tools-section">
+        <div class="section-header">
+          <h2 class="section-title">🛠️ Comprehensive Developer Tools Suite</h2>
+          <p class="section-subtitle">Everything you need to analyze job requirements, optimize your CV, and upskill intelligently.</p>
+        </div>
+
+        <div class="tools-grid">
+
+          <!-- Tool Card 1: Skill Gap Analyzer -->
+          <div class="tool-card feature-active">
+            <div class="tool-badge active">Core Tool</div>
+            <div class="tool-icon">🎯</div>
+            <h3 class="tool-title">Skill Gap Analyzer</h3>
+            <p class="tool-desc">
+              Paste any job description to extract required skills, compute match percentages, and view color-coded extraction previews.
+            </p>
+            <button id="tool-launch-analyzer" class="btn btn-primary btn-sm tool-action-btn">
+              Launch Analyzer →
+            </button>
+          </div>
+
+          <!-- Tool Card 2: Resume Parser & Visual Preview -->
+          <div class="tool-card feature-active">
+            <div class="tool-badge active">Active</div>
+            <div class="tool-icon">📄</div>
+            <h3 class="tool-title">Resume Parser & Visual Viewer</h3>
+            <p class="tool-desc">
+              Upload PDF, DOCX, or TXT resumes. Auto-extract credentials and view your actual PDF document layout in the visual viewer.
+            </p>
+            <button id="tool-open-resume" class="btn btn-outline btn-sm tool-action-btn">
+              Manage Resume →
+            </button>
+          </div>
+
+          <!-- Tool Card 3: Role Comparison Engine -->
+          <div class="tool-card feature-active">
+            <div class="tool-badge active">Active</div>
+            <div class="tool-icon">⚖️</div>
+            <h3 class="tool-title">Role Comparison Engine</h3>
+            <p class="tool-desc">
+              Compare two job descriptions side-by-side to detect shared vs unique skill requirements across target roles.
+            </p>
+            <button id="tool-open-compare" class="btn btn-outline btn-sm tool-action-btn">
+              Compare Roles →
+            </button>
+          </div>
+
+          <!-- Tool Card 4: History & Progress Tracker -->
+          <div class="tool-card feature-active">
+            <div class="tool-badge active">Active</div>
+            <div class="tool-icon">📜</div>
+            <h3 class="tool-title">Saved History & Reports</h3>
+            <p class="tool-desc">
+              Save job analyses to history, track match scores over time, and export candidate report text files for documentation.
+            </p>
+            <button id="tool-open-history" class="btn btn-outline btn-sm tool-action-btn">
+              View History →
+            </button>
+          </div>
+
+          <!-- Tool Card 5: AI Mock Interview Simulator (Future) -->
+          <div class="tool-card feature-future">
+            <div class="tool-badge future">Coming Soon</div>
+            <div class="tool-icon">🤖</div>
+            <h3 class="tool-title">AI Mock Interview Coach</h3>
+            <p class="tool-desc">
+              Practice role-specific technical and behavioral interview questions based on your detected skill gaps.
+            </p>
+            <span class="tool-status-tag">In Development</span>
+          </div>
+
+          <!-- Tool Card 6: Upskilling Roadmap Generator (Future) -->
+          <div class="tool-card feature-future">
+            <div class="tool-badge future">Coming Soon</div>
+            <div class="tool-icon">🗺️</div>
+            <h3 class="tool-title">Personalized Upskilling Roadmap</h3>
+            <p class="tool-desc">
+              Receive curated learning paths, recommended tutorials, and estimated time-to-mastery for target positions.
+            </p>
+            <span class="tool-status-tag">In Development</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section class="workflow-section">
+        <div class="section-header">
+          <h2 class="section-title">🚀 How Gaply Works in 3 Simple Steps</h2>
+        </div>
+        <div class="workflow-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3>Paste Job Description</h3>
+            <p>Paste text from any job board or load one of our built-in sample role descriptions.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3>Automatic Skill Extraction</h3>
+            <p>Gaply scans languages, frameworks, concepts, and soft skills with context-aware sentiment.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3>Bridge Your Gaps</h3>
+            <p>Get your match score, category radar chart, learning checklist, and tailored CV keywords.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Home Footer -->
+      <footer class="app-footer">
+        <div class="footer-brand">
+          <img src="images/logo_img.png" alt="Gaply Logo" class="footer-logo" />
+          <span><strong>Gaply</strong> — Find the gap. Build the skill.</span>
+        </div>
+        <p class="footer-copy">© 2026 Gaply Platform. All rights reserved.</p>
+      </footer>
+
+    </div>
+
+    <!-- VIEW 2: SKILL GAP ANALYZER APPLICATION -->
+    <div id="view-analyzer" class="view-section" style="display: none;">
+
+      <!-- Top Banner for Analyzer View -->
+      <div class="analyzer-top-banner">
+        <button id="back-to-home-btn" class="btn btn-outline btn-sm">
+          ← Back to Gaply Home
+        </button>
+        <span class="analyzer-banner-title">🎯 Gaply Skill Gap Analyzer Workbench</span>
+      </div>
+
+      <div class="app-container">
+        <!-- Pane 1: Job Description Input -->
+        <section class="panel input-panel" aria-labelledby="input-panel-heading">
+          <div class="panel-header">
+            <h2 id="input-panel-heading" class="panel-title">
+              <span>📝</span> Job Description Input
+            </h2>
+            <button id="save-history-btn" class="btn btn-sm btn-outline" title="Save this analysis to history">
+              ⭐ Save
+            </button>
+          </div>
+
+          <div class="input-controls">
+            <label for="sample-select" class="sr-only">Load a Sample Job Description</label>
+            <select id="sample-select" class="sample-select">
+              <option value="">-- Load a Sample Job Description --</option>
+            </select>
+          </div>
+
+          <div class="textarea-wrapper">
+            <label for="jd-textarea" class="sr-only">Paste Job Description Text</label>
+            <textarea id="jd-textarea" class="jd-textarea"
+              placeholder="Paste any job description here (e.g., Senior Frontend Engineer requirements)..."
+              aria-describedby="textarea-meta"></textarea>
+
+            <div id="textarea-meta" class="textarea-footer">
+              <button id="clear-text-btn" class="btn-icon" title="Clear text area">🗑️ Clear Text</button>
+              <div class="counter-group">
+                <span id="word-count">0 words</span>
+                <span>•</span>
+                <span id="char-count">0 chars</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pane 2: Highlighted Job Preview -->
+        <section class="panel preview-panel" aria-labelledby="preview-panel-heading">
+          <div class="panel-header">
+            <h2 id="preview-panel-heading" class="panel-title">
+              <span>🔍</span> Skill Extraction Preview
+            </h2>
+            <button id="toggle-highlights-btn" class="btn btn-sm btn-outline active" title="Toggle skill color highlights">
+              👁️ Highlights ON
+            </button>
+          </div>
+
+          <!-- Safe DOM highlighted text container -->
+          <div id="highlighted-jd" class="highlighted-viewport" tabindex="0" role="region"
+            aria-label="Highlighted Job Description text preview">
+            <div class="empty-state">
+              <p class="empty-title">Highlighted preview will appear here</p>
+              <p class="empty-desc">As you type or load a job description, extracted skills will be color-coded by category.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pane 3: Match Dashboard & Tabs Sidebar -->
+        <section class="panel results-sidebar" aria-labelledby="results-panel-heading">
+          <div class="panel-header">
+            <h2 id="results-panel-heading" class="panel-title">
+              <span>📊</span> Analysis Dashboard
+            </h2>
+            <!-- Live screen reader output -->
+            <output id="live-score-output" class="sr-only" aria-live="polite"></output>
+          </div>
+
+          <!-- Score Gauge & SVG Radar Chart -->
+          <div class="match-dashboard">
+            <!-- Radial Gauge with Conic-Gradient -->
+            <div class="gauge-wrapper">
+              <div id="match-gauge" class="radial-gauge">
+                <div class="gauge-center">
+                  <span class="gauge-value">0%</span>
+                  <span class="gauge-label">Match</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SVG Radar Chart of Categories -->
+            <div class="radar-wrapper">
+              <svg id="radar-chart-svg" class="radar-chart-svg" viewBox="0 0 240 240"
+                aria-label="Category coverage radar chart"></svg>
+            </div>
+          </div>
+
+          <!-- Accessible Tabs Navigation -->
+          <nav class="tablist-nav">
+            <div id="analyzer-tablist" role="tablist" aria-label="Skill Gap Analysis views">
+              <button id="tab-skills" role="tab" aria-selected="true" aria-controls="panel-skills" class="tab-btn active">
+                Skills Found
+              </button>
+              <button id="tab-gaps" role="tab" aria-selected="false" aria-controls="panel-gaps" class="tab-btn">
+                Your Gaps
+              </button>
+              <button id="tab-plan" role="tab" aria-selected="false" aria-controls="panel-plan" class="tab-btn">
+                Learning Plan
+              </button>
+              <button id="tab-cv" role="tab" aria-selected="false" aria-controls="panel-cv" class="tab-btn">
+                CV Keywords
+              </button>
+            </div>
+          </nav>
+
+          <!-- Tab Panel 1: Skills Found -->
+          <div id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" class="tabpanel active">
+            <!-- Rendered via AppUI.renderSkillsFound using <details> / <summary> -->
+          </div>
+
+          <!-- Tab Panel 2: Ranked Gap List -->
+          <div id="panel-gaps" role="tabpanel" aria-labelledby="tab-gaps" class="tabpanel" hidden>
+            <!-- Rendered via AppUI.renderGapsList -->
+          </div>
+
+          <!-- Tab Panel 3: Learning Plan Checklist -->
+          <div id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" class="tabpanel" hidden>
+            <!-- Rendered via AppUI.renderLearningChecklist -->
+          </div>
+
+          <!-- Tab Panel 4: CV Keywords Generator -->
+          <div id="panel-cv" role="tabpanel" aria-labelledby="tab-cv" class="tabpanel" hidden>
+            <!-- Rendered via AppUI.renderCVKeywords -->
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Comprehensive Profile & Resume Drawer -->
+  <div id="profile-drawer" class="drawer" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="profile-drawer-title">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <h3 id="profile-drawer-title">👤 User Profile & Resume Management</h3>
+        <button id="close-profile-btn" class="btn-icon" aria-label="Close profile drawer">✕</button>
+      </div>
+
+      <!-- Inner Drawer Tabs -->
+      <div class="drawer-tabs">
+        <button id="drawer-tab-info" class="drawer-tab-btn active" data-tab="info">👤 Personal Info</button>
+        <button id="drawer-tab-resume" class="drawer-tab-btn" data-tab="resume">📄 Upload Resume</button>
+        <button id="drawer-tab-skills" class="drawer-tab-btn" data-tab="skills">⚡ Skill Ratings</button>
+        <button id="drawer-tab-preview" class="drawer-tab-btn" data-tab="preview">👁️ Resume Preview</button>
+      </div>
+
+      <!-- Profile Tab 1: Personal Credentials & Info Form -->
+      <div id="drawer-panel-info" class="drawer-tabpanel active">
+        <form id="edit-profile-form" class="profile-form">
+
+          <div class="avatar-upload-section">
+            <div class="avatar-preview-container">
+              <img id="edit-avatar-preview" src="" alt="Avatar" class="avatar-large" style="display: none;" />
+              <span id="edit-avatar-placeholder" class="avatar-large-placeholder">👤</span>
+            </div>
+            <div class="avatar-input-group">
+              <label for="edit-avatar-file" class="btn btn-sm btn-outline">📷 Change Face Pic</label>
+              <input type="file" id="edit-avatar-file" accept="image/*" style="display: none;" />
+              <p class="form-hint">Upload your profile picture (JPEG/PNG)</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-name">Full Name</label>
+            <input type="text" id="edit-name" class="form-input" placeholder="e.g. Alex Developer" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-email">Email Address</label>
+              <input type="email" id="edit-email" class="form-input" placeholder="alex@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="edit-gender">Gender</label>
+              <select id="edit-gender" class="form-input">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-phone">Contact Number</label>
+              <input type="tel" id="edit-phone" class="form-input" placeholder="+1 555-0198" />
+            </div>
+            <div class="form-group">
+              <label for="edit-whatsapp">WhatsApp Number</label>
+              <input type="tel" id="edit-whatsapp" class="form-input" placeholder="+1 555-0198" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-linkedin">LinkedIn ID / Profile URL</label>
+            <input type="url" id="edit-linkedin" class="form-input" placeholder="https://linkedin.com/in/username" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-github">GitHub Profile</label>
+              <input type="url" id="edit-github" class="form-input" placeholder="https://github.com/username" />
+            </div>
+            <div class="form-group">
+              <label for="edit-leetcode">LeetCode / HackerRank Profile</label>
+              <input type="url" id="edit-leetcode" class="form-input" placeholder="https://leetcode.com/username" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-address">Address / Location</label>
+            <textarea id="edit-address" class="form-input" rows="2"
+              placeholder="Street, City, State, Country"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              💾 Save Profile Credentials
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Profile Tab 2: Resume Manager & Auto-Extractor -->
+      <div id="drawer-panel-resume" class="drawer-tabpanel" style="display: none;">
+        <div class="resume-manager-card">
+          <h4>📄 Upload & Parse Resume</h4>
+          <p class="empty-desc" style="margin-bottom: 1rem;">
+            Upload your resume (.pdf, .docx, .txt) to automatically extract skills, contact details, and update your
+            skill profile.
+          </p>
+
+          <div class="dropzone-box" id="resume-dropzone">
+            <span class="dropzone-icon">📥</span>
+            <p class="dropzone-text">Drag & drop your resume file here or click to browse</p>
+            <input type="file" id="resume-file-input" accept=".pdf,.doc,.docx,.txt,.md" style="display: none;" />
+            <button type="button" id="browse-resume-btn" class="btn btn-outline" style="margin-top: 0.5rem;">
+              📁 Choose File
+            </button>
+          </div>
+
+          <div id="active-resume-info" class="active-resume-card" style="display: none; margin-top: 1rem;">
+            <div class="resume-info-header">
+              <span class="resume-icon">📑</span>
+              <div>
+                <strong id="resume-filename">Resume.pdf</strong>
+                <p id="resume-upload-date" class="form-hint">Uploaded on 2026-10-01</p>
+              </div>
+            </div>
+            <div id="extracted-skills-summary" class="extracted-skills-box" style="margin-top: 0.5rem;">
+              <!-- Extracted skills tags -->
+            </div>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button id="reparse-resume-btn" class="btn btn-sm btn-primary">
+                🔄 Re-Extract Skills & Update Profile
+              </button>
+              <button id="view-resume-preview-btn" class="btn btn-sm btn-outline">
+                👁️ View Resume Preview
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Tab 3: Skill Levels & Star Ratings -->
+      <div id="drawer-panel-skills" class="drawer-tabpanel" style="display: none;">
+        <p class="empty-desc" style="margin-bottom: 1rem;">
+          Rate your proficiency (Level 1 to 5) for skills you know. Skill gaps will be calculated against these ratings.
+        </p>
+
+        <div class="input-controls" style="margin-bottom: 1rem;">
+          <div style="display: flex; gap: 0.5rem;">
+            <select id="add-profile-skill-select" class="sample-select">
+              <option value="">-- Add Skill to Profile --</option>
+            </select>
+            <button id="add-profile-skill-btn" class="btn btn-primary">+ Add</button>
+          </div>
+        </div>
+
+        <div id="profile-skills-list" style="flex: 1; overflow-y: auto;">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <div style="margin-top: 1rem; text-align: right;">
+          <button id="reset-profile-btn" class="btn btn-outline" style="color: #ef4444; border-color: #ef4444;">
+            🔄 Reset Skills to Default
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile Tab 4: Interactive Resume Text Preview -->
+      <div id="drawer-panel-preview" class="drawer-tabpanel" style="display: none;">
+        <div id="resume-preview-container" style="flex: 1; display: flex; flex-direction: column;">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- User Registration Modal -->
+  <div id="register-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="register-modal-title">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h3 id="register-modal-title">✨ Create Your Account & Profile</h3>
+        <button id="close-register-btn" class="btn-icon" aria-label="Close registration modal">✕</button>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Sign up to save your skill profile, credentials, and uploaded resumes across sessions.
+      </p>
+
+      <form id="registration-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-name">Full Name <span class="required-star">*</span></label>
+            <input type="text" id="reg-name" class="form-input" placeholder="e.g. John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address <span class="required-star">*</span></label>
+            <input type="email" id="reg-email" class="form-input" placeholder="john.doe@example.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-password">Password <span class="required-star">*</span></label>
+            <input type="password" id="reg-password" class="form-input" placeholder="Create a password" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-gender">Gender</label>
+            <select id="reg-gender" class="form-input">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-phone">Contact Number</label>
+            <input type="tel" id="reg-phone" class="form-input" placeholder="+1 555-0198" />
+          </div>
+          <div class="form-group">
+            <label for="reg-whatsapp">WhatsApp Number</label>
+            <input type="tel" id="reg-whatsapp" class="form-input" placeholder="+1 555-0198" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-address">Address</label>
+          <input type="text" id="reg-address" class="form-input" placeholder="Street, City, State, Country" />
+        </div>
+
+        <!-- Optional Resume Upload during registration -->
+        <div class="form-group" style="margin-top: 0.5rem; margin-bottom: 1.25rem;">
+          <label for="reg-resume-file">Upload Resume (Optional - Auto extracts skills & contact info)</label>
+          <input type="file" id="reg-resume-file" class="form-input" accept=".pdf,.doc,.docx,.txt,.md" />
+          <div id="reg-resume-status" class="form-hint" style="margin-top: 0.25rem;"></div>
+        </div>
+
+        <div id="reg-error-msg" class="error-msg-box" style="display: none;"></div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 1rem;">
+          ✨ Complete Registration & Create Profile
+        </button>
+
+        <p style="text-align: center; margin-top: 1rem; font-size: 0.88rem;">
+          Already have an account? <a href="#" id="switch-to-login"
+            style="color: var(--primary-color); font-weight: 600;">Log In here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Login Modal -->
+  <div id="login-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="login-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="login-modal-title">🔐 Log In to Your Account</h3>
+        <button id="close-login-btn" class="btn-icon" aria-label="Close login modal">✕</button>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-input" placeholder="your.email@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required />
+        </div>
+
+        <div id="login-error-msg" class="error-msg-box" style="display: none;"></div>
+
+        <button type="submit" class="btn btn-primary"
+          style="width: 100%; padding: 0.75rem; font-size: 1rem; margin-top: 0.5rem;">
+          🔓 Log In Now
+        </button>
+
+        <p style="text-align: center; margin-top: 1rem; font-size: 0.88rem;">
+          Don't have an account yet? <a href="#" id="switch-to-register"
+            style="color: var(--primary-color); font-weight: 600;">Register Now</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- History Drawer -->
+  <div id="history-drawer" class="drawer" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="history-drawer-title">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <h3 id="history-drawer-title">📜 Saved Analyses History</h3>
+        <button id="close-history-btn" class="btn-icon" aria-label="Close history drawer">✕</button>
+      </div>
+      <div id="history-list" style="flex: 1; overflow-y: auto;">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Compare Job Descriptions Modal -->
+  <div id="compare-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="compare-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="compare-modal-title">⚖️ Compare Two Job Descriptions</h3>
+        <button id="close-compare-btn" class="btn-icon" aria-label="Close compare modal">✕</button>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Compare your current active job description (Role A) against a second job description (Role B) to see shared vs
+        unique required skills.
+      </p>
+
+      <label for="compare-jd-b-textarea" class="sr-only">Second Job Description Text</label>
+      <textarea id="compare-jd-b-textarea" class="jd-textarea"
+        style="height: 180px; min-height: 180px; margin-bottom: 1rem;"
+        placeholder="Paste second job description (Role B) here..."></textarea>
+
+      <button id="run-compare-btn" class="btn btn-primary" style="margin-bottom: 1rem;">
+        🔍 Compare Roles Now
+      </button>
+
+      <div id="compare-results">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Libraries & Modules -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

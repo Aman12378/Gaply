@@ -1,0 +1,9 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & Temporary Files
+*.log
+node_modules/
+.gemini/
