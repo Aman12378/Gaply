@@ -1,0 +1,82 @@
+/* Gaply header. Load AFTER css/style.css, home.css, home-polish.css.
+   SWAP: colors are tokens on .gn-header. Desktop layout >= 901px; below that style.css drawer rules still apply. */
+header.gn-header{
+  --n-bg:rgba(23,18,14,.82); --n-line:#3A2F25; --n-text:#F5EBDD; --n-muted:#B3A593;
+  --n-surface:#211A14; --n-gap:#FFB627; --n-cta:#FFB627; --n-cta-ink:#17120E; --n-danger:#F2705F;
+  position:sticky; top:0; z-index:100; padding:0; height:auto;
+  background:var(--n-bg); border-bottom:1px solid var(--n-line); box-shadow:none;
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);   /* glass lives only here */
+  font-family:"Inter",system-ui,sans-serif; color:var(--n-text);
+}
+/* SWAP: match to how js/main.js toggles light mode (grep "theme") */
+[data-theme="light"] header.gn-header,.light-theme header.gn-header,body.light header.gn-header,body.light-mode header.gn-header{
+  --n-bg:rgba(246,239,228,.85); --n-line:#DFD2BE; --n-text:#231A12; --n-muted:#6B5D4E;
+  --n-surface:#FFFFFF; --n-gap:#B86E00; --n-cta:#231A12; --n-cta-ink:#F6EFE4; --n-danger:#C0392B;
+}
+.gn-header *{box-sizing:border-box}
+.gn-header button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;margin:0}
+.gn-header button:focus-visible,.gn-chip:focus-visible{outline:2px solid var(--n-gap);outline-offset:2px;border-radius:8px}
+.gn-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.gn-inner{max-width:1180px;margin:0 auto;padding:0 1.5rem;min-height:64px;display:flex;align-items:center;gap:1.5rem}
+.gn-brand{display:inline-flex;align-items:center;gap:.6rem;padding:.25rem 0}
+.gn-brand img{display:block;border-radius:8px;transition:transform .25s ease}
+.gn-brand:hover img{transform:scale(1.08)}
+.gn-brand-name{font-family:"Bricolage Grotesque","Inter",sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.02em}
+
+.gn-drawer{display:flex;align-items:center;flex:1;gap:1.5rem;background:none;border:0;padding:0;box-shadow:none}
+.gn-nav{display:flex;gap:.25rem;background:none;padding:0;margin:0}
+.gn-header .gn-nav .nav-link{position:relative;display:inline-flex;flex-direction:row;align-items:center;
+  padding:.5rem .8rem;border-radius:0;background:none;box-shadow:none;border:0;
+  color:var(--n-muted);font-size:.95rem;font-weight:500;transition:color .2s ease}
+.gn-header .gn-nav .nav-link::after{content:"";position:absolute;left:.8rem;right:.8rem;bottom:2px;height:2px;
+  background:var(--n-gap);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.gn-header .gn-nav .nav-link:hover{color:var(--n-text);background:none}
+.gn-header .gn-nav .nav-link:hover::after{transform:scaleX(.35)}
+.gn-header .gn-nav .nav-link.active{color:var(--n-text);background:none;box-shadow:none}
+.gn-header .gn-nav .nav-link.active::after{transform:scaleX(1)}
+
+.gn-actions{display:flex;align-items:center;gap:.75rem;margin-left:auto;background:none;padding:0}
+.gn-auth{display:flex;align-items:center;gap:.5rem}
+.gn-text{display:inline-flex;align-items:center;gap:.35rem;padding:.5rem .8rem;border-radius:8px;color:var(--n-muted);font-weight:500;font-size:.95rem;transition:color .2s,background-color .2s}
+.gn-text:hover,.gn-ws[aria-expanded="true"]{color:var(--n-text);background:color-mix(in srgb,var(--n-text) 8%,transparent)}
+.gn-cta{padding:.55rem 1.1rem;border-radius:8px;background:var(--n-cta);color:var(--n-cta-ink)!important;font-weight:600;font-size:.95rem;transition:transform .2s ease,filter .2s ease}
+.gn-cta:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.gn-cta:active{transform:none}
+
+.gn-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.2rem .7rem .2rem .25rem;border-radius:999px;background:none;border:1px solid var(--n-line);cursor:pointer;transition:border-color .2s}
+.gn-chip:hover{border-color:var(--n-gap)}
+.gn-chip .avatar-img-placeholder,.gn-chip img{width:28px;height:28px;border-radius:50%;object-fit:cover;display:inline-flex;align-items:center;justify-content:center;background:var(--n-surface);font-size:.9rem}
+.gn-chip .user-name-text{font-size:.9rem;font-weight:600;max-width:9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.gn-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;color:var(--n-muted);transition:color .2s,background-color .2s,transform .3s}
+.gn-icon:hover{color:var(--n-text);background:color-mix(in srgb,var(--n-text) 8%,transparent)}
+#theme-toggle-btn:hover svg{transform:rotate(180deg)}
+#theme-toggle-btn svg{transition:transform .4s ease}
+
+.gn-menu-wrap{position:relative}
+.gn-chev{transition:transform .25s ease}
+.gn-ws[aria-expanded="true"] .gn-chev{transform:rotate(180deg)}
+.gn-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:15rem;padding:.4rem;border-radius:12px;
+  background:var(--n-surface);border:1px solid var(--n-line);box-shadow:0 12px 32px rgba(0,0,0,.35);
+  opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top right;
+  transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+.gn-menu.is-open{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.gn-item{display:block;width:100%;text-align:left;padding:.6rem .8rem;border-radius:8px;font-size:.93rem;color:var(--n-text);transition:background-color .15s,padding-left .2s}
+.gn-item:hover{background:color-mix(in srgb,var(--n-text) 8%,transparent);padding-left:1rem}
+.gn-danger{color:var(--n-danger);margin-top:.3rem;border-top:1px solid var(--n-line);border-radius:0 0 8px 8px}
+
+.gn-mobile{display:contents}
+.gn-mobile .mobile-menu-toggle-btn{display:none}
+
+@media (max-width:900px){
+  .gn-inner{flex-wrap:wrap;gap:.5rem}
+  .gn-mobile{display:flex;gap:.25rem;margin-left:auto}
+  .gn-mobile .mobile-menu-toggle-btn{display:inline-flex}
+  .gn-drawer{flex-direction:column;align-items:stretch;width:100%;order:3}
+  .gn-nav{flex-direction:column}
+  .gn-actions{flex-direction:column;align-items:stretch;margin-left:0}
+  .gn-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0}
+  .gn-ws{display:none}
+}
+@media (prefers-reduced-motion:reduce){.gn-header *{transition:none!important}}
