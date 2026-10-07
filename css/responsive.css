@@ -1,0 +1,471 @@
+/* ==========================================================================
+   responsive.css  –  Gaply Mobile / Tablet / Laptop Optimization Layer
+   Load LAST (after analyzer-theme.css). Pure layout fixes only.
+   Design, colors, fonts, and copy are NOT changed.
+   Mobile-first: base = mobile, then min-width breakpoints upward.
+   ========================================================================== */
+
+/* ── Breakpoint reference (read-only, not used as custom props in calc) ──
+   --bp-sm : 480px   – large phones landscape / tiny tablets
+   --bp-md : 600px   – small tablets portrait
+   --bp-lg : 768px   – tablet portrait
+   --bp-xl : 1024px  – laptop / tablet landscape
+   --bp-2xl: 1280px  – wide laptop
+   --bp-3xl: 1440px  – large desktop
+*/
+
+/* ==========================================================================
+   1. GLOBAL TOUCH + OVERFLOW HARDENING
+   ========================================================================== */
+
+/* Prevent any element from causing horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Ensure all images are responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch targets: minimum 44×44 px for interactive elements */
+button,
+.tab-btn,
+.nav-link,
+.drawer-tab-btn,
+.gh-btn,
+.gh-link,
+.gn-item {
+  min-height: 44px;
+}
+
+/* Tabs and small buttons are exempt from 44 px min — they stack well */
+.btn-sm,
+.tab-btn { min-height: 36px; }
+
+/* Smooth momentum scroll inside overflow containers */
+.highlighted-viewport,
+.tabpanel,
+.drawer-content,
+.modal-content,
+#history-list,
+#profile-skills-list {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent pre-wrap content from breaking layouts */
+.highlighted-viewport {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   2. HEADER  (tiny phones 360–390 px)
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .gn-inner {
+    gap: 0.25rem;
+    padding: 0 0.75rem;
+  }
+
+  .gn-brand-name {
+    font-size: 1.1rem;
+  }
+}
+
+/* ==========================================================================
+   3. HOME VIEW — HERO SECTION
+   ========================================================================== */
+
+/* Phones: single column, reduced vertical padding */
+@media (max-width: 479px) {
+  .gh-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .gh-title {
+    font-size: clamp(1.75rem, 8vw, 2.4rem);
+  }
+
+  .gh-lead {
+    font-size: 1rem;
+    margin-top: 0.9rem;
+  }
+
+  .gh-actions {
+    gap: 0.75rem 1rem;
+  }
+
+  /* Keep ledger readable */
+  .gh-ledger {
+    padding: 1rem;
+  }
+}
+
+/* Tablets portrait: gentle hero padding */
+@media (min-width: 480px) and (max-width: 767px) {
+  .gh-hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 3.5rem 1.25rem 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   4. HOME VIEW — SKILL LEDGER (bar chart table)
+   The existing rule in home.css hides .gh-state at ≤480px.
+   We improve it so the grid doesn't overflow at 360 px.
+   ========================================================================== */
+
+@media (max-width: 599px) {
+  .gh-skills li {
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.6rem;
+    row-gap: 0.35rem;
+  }
+
+  .gh-state {
+    grid-column: 1 / -1;
+    text-align: left;
+    font-size: 0.78rem;
+  }
+
+  .gh-skill {
+    font-size: 0.88rem;
+  }
+}
+
+/* ==========================================================================
+   5. HOME VIEW — "WHAT'S IN GAPLY" ROWS
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .gh-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 1.1rem 0;
+  }
+
+  .gh-row .gh-link {
+    white-space: normal;
+    align-self: flex-start;
+  }
+
+  .gh-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .gh-h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   6. HOME VIEW — "HOW IT WORKS" STEPS
+   ========================================================================== */
+
+/* Already 1-col at ≤480 px via home.css — extend to ≤600 px */
+@media (max-width: 599px) {
+  .gh-steps {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   7. HOME VIEW — FOOTER
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .gh-footer {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.5rem 1rem 2.5rem;
+    text-align: center;
+  }
+
+  .gh-footer-brand {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   8. ANALYZER VIEW — PANEL LAYOUT
+   The existing override in style.css fires at ≤991px.
+   Problems fixed here:
+     a. panels had height: calc(100vh - 120px) — collapses textarea on mobile
+     b. textarea min-height too short on small phones
+     c. match-dashboard two-col grid breaks at ≤480px
+   ========================================================================== */
+
+/* Phones & small tablets — natural height, no fixed vh */
+@media (max-width: 767px) {
+  .panel {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .jd-textarea {
+    min-height: 200px !important;
+    height: 200px !important;
+  }
+
+  .highlighted-viewport {
+    min-height: 180px;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .results-sidebar {
+    overflow: visible !important;
+  }
+
+  /* Match dashboard: single column on phones */
+  .match-dashboard {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .radar-wrapper {
+    width: 100%;
+  }
+
+  .radar-chart-svg {
+    max-width: 180px;
+    height: 120px;
+  }
+}
+
+/* Tablet range: slightly taller textarea */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .jd-textarea {
+    min-height: 240px;
+  }
+}
+
+/* Laptop and up: restore full-height panels */
+@media (min-width: 1024px) {
+  .panel {
+    height: calc(100vh - 120px);
+    overflow: hidden;
+  }
+}
+
+/* ==========================================================================
+   9. ANALYZER VIEW — TOP BANNER
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .analyzer-top-banner {
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+    padding: 0.6rem 1rem;
+  }
+
+  .analyzer-banner-title {
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================================================
+   10. ANALYZER VIEW — TABS  (prevent bleed, add touch-friendly scroll)
+   ========================================================================== */
+
+.tablist-nav {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;           /* Firefox */
+}
+
+.tablist-nav::-webkit-scrollbar {
+  display: none;                   /* Chrome / Safari */
+}
+
+/* ==========================================================================
+   11. PROFILE DRAWER & ALL MODALS — FORM ROWS
+   Two-column form rows are too narrow on phones. Collapse to 1-col.
+   ========================================================================== */
+
+@media (max-width: 599px) {
+  /* Form rows in drawer and register modal */
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+
+  /* Drawer tabs: allow wrap instead of forcing scroll */
+  .drawer-tabs {
+    flex-wrap: wrap;
+    gap: 0.1rem 0;
+  }
+
+  .drawer-tab-btn {
+    font-size: 0.74rem;
+    padding: 0.45rem 0.6rem;
+  }
+}
+
+/* ==========================================================================
+   12. COMPARE MODAL  — results grids
+   ========================================================================== */
+
+@media (max-width: 599px) {
+  .comparison-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .comparison-lists {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .comparison-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .comparison-lists {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ==========================================================================
+   13. MODALS  — content sizing on small screens
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .modal-content {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    border-radius: 16px 16px 0 0 !important;
+    max-height: 96vh;
+    padding: 1.1rem 1rem !important;
+  }
+
+  /* Modal aligns to bottom on phones (sheet style) */
+  .modal {
+    align-items: flex-end !important;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 599px) {
+  .modal-content {
+    width: 98vw !important;
+    max-width: 98vw !important;
+    padding: 1.25rem 1rem !important;
+  }
+}
+
+/* ==========================================================================
+   14. PROFILE DRAWER  — full width on very small phones
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .drawer-content {
+    max-width: 100vw !important;
+    padding: 1.1rem 1rem !important;
+  }
+}
+
+/* ==========================================================================
+   15. SKILL RATINGS — profile skill row wrapping
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .profile-skill-row {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .profile-skill-controls {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+}
+
+/* ==========================================================================
+   16. GAP CARDS  — title row wrapping on mobile
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .gap-title-row {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .gap-actions {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+/* ==========================================================================
+   17. CHECKLIST  — label wrapping
+   ========================================================================== */
+
+@media (max-width: 479px) {
+  .checklist-item {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .checklist-label {
+    font-size: 0.84rem;
+  }
+}
+
+/* ==========================================================================
+   18. LAPTOP AND LARGE DESKTOP  — max-width containment
+   ========================================================================== */
+
+/* Ensure content never stretches beyond readable line length on 1920+ */
+@media (min-width: 1440px) {
+  .app-container {
+    max-width: 1700px;
+    margin: 0 auto;
+  }
+
+  .gh-hero,
+  .gh-section,
+  .gh-footer {
+    max-width: 1280px;
+  }
+}
+
+/* ==========================================================================
+   19. PRINT  — page margin
+   ========================================================================== */
+
+@media print {
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+}
+
+/* ==========================================================================
+   20. REDUCED MOTION — disable all custom animations
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

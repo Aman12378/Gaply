@@ -1,0 +1,81 @@
+/* ============================================================
+   Gaply home view. Load AFTER css/style.css. Scoped to #view-home.
+   SWAP: all colors live in the two token blocks below.
+============================================================= */
+#view-home{
+  --h-bg:#17120E; --h-surface:#211A14; --h-line:#3A2F25;
+  --h-text:#F5EBDD; --h-muted:#B3A593;
+  --h-gap:#FFB627;            /* SWAP: gap color, also the CTA */
+  --h-match:#5FB89A;          /* SWAP: covered-skill color */
+  --h-cta:#FFB627; --h-cta-ink:#17120E;
+  --h-display:"Bricolage Grotesque","Inter",system-ui,sans-serif;
+  --h-body:"Inter",system-ui,sans-serif;
+  background:var(--h-bg); color:var(--h-text); font-family:var(--h-body);
+}
+/* SWAP: match this selector to however js/main.js toggles light mode (grep "theme") */
+[data-theme="light"] #view-home, .light-theme #view-home, body.light #view-home, body.light-mode #view-home{
+  --h-bg:#F6EFE4; --h-surface:#FFFFFF; --h-line:#DFD2BE;
+  --h-text:#231A12; --h-muted:#6B5D4E;
+  --h-gap:#B86E00; --h-match:#2F7F63;
+  --h-cta:#231A12; --h-cta-ink:#F6EFE4;
+}
+#view-home *{box-sizing:border-box}
+#view-home h1,#view-home h2,#view-home h3{font-family:var(--h-display);margin:0;letter-spacing:-.02em;color:var(--h-text)}
+#view-home p{margin:0}
+
+/* Buttons: no .btn class, so style.css button rules do not apply */
+.gh-btn,.gh-link{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.gh-btn{background:var(--h-cta);color:var(--h-cta-ink);font-weight:600;padding:.85rem 1.4rem;border-radius:8px}
+.gh-btn:hover{filter:brightness(1.08)}
+.gh-link{color:var(--h-text);text-decoration:underline;text-decoration-color:var(--h-line);text-underline-offset:.3em;padding:.4rem 0}
+.gh-link:hover{text-decoration-color:var(--h-gap)}
+.gh-btn:focus-visible,.gh-link:focus-visible{outline:2px solid var(--h-gap);outline-offset:3px}
+
+/* Hero */
+.gh-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:4rem;align-items:center;
+  max-width:1120px;margin:0 auto;padding:5.5rem 1.5rem 4.5rem}
+.gh-title{font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.08;font-weight:700;max-width:16ch}
+.gh-lead{margin-top:1.25rem;font-size:1.1rem;line-height:1.6;color:var(--h-muted);max-width:46ch}
+.gh-actions{margin-top:2rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.5rem}
+
+/* Sample ledger: the one memorable element */
+.gh-ledger{margin:0;background:var(--h-surface);border:1px solid var(--h-line);border-radius:12px;padding:1.5rem}
+.gh-ledger-head{font-size:.85rem;color:var(--h-muted);padding-bottom:1rem;border-bottom:1px solid var(--h-line)}
+.gh-skills{list-style:none;margin:0;padding:0}
+.gh-skills li{display:grid;grid-template-columns:6.5rem 1fr 8.5rem;align-items:center;gap:1rem;
+  padding:1rem 0;border-bottom:1px solid var(--h-line)}
+.gh-skills li:last-child{border-bottom:0;padding-bottom:0}
+.gh-skill{font-weight:600;font-size:.95rem}
+.gh-bar{position:relative;height:10px;border-radius:5px;background:var(--h-line);overflow:hidden}
+.gh-bar i{position:absolute;left:0;top:0;bottom:0;display:block}
+.gh-need{width:var(--need);background:repeating-linear-gradient(135deg,var(--h-gap) 0 3px,transparent 3px 7px);opacity:.75}
+.gh-have{width:var(--have);background:var(--h-match);animation:gh-fill 1s cubic-bezier(.2,.7,.2,1) .25s both}
+.gh-state{font-size:.82rem;color:var(--h-muted);text-align:right}
+.gh-state.is-ok{color:var(--h-match)} .gh-state.is-gap{color:var(--h-gap)}
+@keyframes gh-fill{from{width:0}}
+
+/* Sections */
+.gh-section{max-width:1120px;margin:0 auto;padding:3.5rem 1.5rem;border-top:1px solid var(--h-line)}
+.gh-h2{font-size:1.7rem;font-weight:700;margin-bottom:2rem}
+.gh-row{display:flex;justify-content:space-between;align-items:center;gap:2rem;padding:1.4rem 0;border-bottom:1px solid var(--h-line)}
+.gh-row:first-child{padding-top:0}
+.gh-row h3{font-size:1.15rem;margin-bottom:.35rem}
+.gh-row p{color:var(--h-muted);max-width:56ch;line-height:1.55}
+.gh-row .gh-link{white-space:nowrap}
+.gh-steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.gh-steps li{counter-increment:s;border-top:2px solid var(--h-gap);padding-top:1rem}
+.gh-steps li::before{content:counter(s);font-family:var(--h-display);font-weight:700;color:var(--h-gap);font-size:1.1rem}
+.gh-steps h3{font-size:1.1rem;margin:.4rem 0}
+.gh-steps p{color:var(--h-muted);line-height:1.55}
+.gh-note{margin-top:2.5rem;color:var(--h-muted);font-size:.92rem}
+.gh-footer{max-width:1120px;margin:0 auto;padding:2rem 1.5rem 3rem;border-top:1px solid var(--h-line);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--h-muted);font-size:.88rem}
+.gh-footer-brand{display:inline-flex;align-items:center;gap:.5rem;color:var(--h-text);font-weight:600}
+
+@media (max-width:860px){
+  .gh-hero{grid-template-columns:1fr;gap:2.5rem;padding-top:3rem}
+  .gh-steps{grid-template-columns:1fr;gap:1.75rem}
+  .gh-row{flex-direction:column;align-items:flex-start;gap:.75rem}
+}
+@media (max-width:480px){.gh-skills li{grid-template-columns:5rem 1fr;} .gh-state{grid-column:1/-1;text-align:left}}
+@media (prefers-reduced-motion:reduce){.gh-have{animation:none}}

@@ -13,6 +13,18 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/home-polish.css" />
+  <link rel="stylesheet" href="css/home-animate.css" />
+
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/analyzer-theme.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/print.css" media="print" />
 </head>
 
@@ -22,7 +34,7 @@
   <div id="splash-screen" class="splash-screen">
     <div class="splash-content">
       <div class="splash-logo-container">
-        <img src="images/logo_img.png" alt="Gaply Logo" class="splash-logo" />
+        <img src="images/logo_img.png" alt="Gaply" class="splash-logo" width="110" height="110" />
       </div>
       <h1 class="splash-title">Gaply</h1>
       <p class="splash-tagline">Find the gap. Build the skill.</p>
@@ -33,70 +45,78 @@
   </div>
 
   <!-- App Header -->
-  <header class="app-header">
-    <div class="brand-container" id="nav-brand" style="cursor: pointer;" title="Go to Gaply Home">
-      <img src="images/logo_img.png" alt="Gaply Logo" class="brand-logo-img" />
-      <div>
-        <h1 class="brand-title">Gaply</h1>
-        <p class="brand-tagline">Find the gap. Build the skill.</p>
-      </div>
-    </div>
+  <!-- ============================================================
+  GAPLY HEADER (replaces the whole <header class="app-header"> ... </header> block)
+  Every id is kept so js/main.js still works. 10 controls became: 3 links, auth, 1 Workspace menu.
+  SWAP: link labels, "Log in" / "Get started" CTA copy.
+============================================================= -->
+  <header class="app-header gn-header">
+    <div class="gn-inner">
 
-    <!-- Mobile Header Quick Controls -->
-    <div class="mobile-header-controls">
-      <button id="theme-toggle-btn" class="btn btn-outline theme-toggle-btn" title="Toggle Dark / Light theme">
-        🌗 <span class="theme-btn-text">Theme</span>
+      <button type="button" id="nav-brand" class="gn-brand" title="Go to Gaply home">
+        <img src="images/logo_img.png" alt="" class="brand-logo-img" width="32" height="32" loading="eager" />
+        <span class="gn-brand-name">Gaply</span>
       </button>
-      <button id="mobile-menu-toggle" class="mobile-menu-toggle-btn" aria-label="Toggle navigation menu" title="Toggle Navigation Menu">
-        <span>☰ Menu</span>
-      </button>
-    </div>
 
-    <!-- Navigation Menu & Actions Drawer Container -->
-    <div id="nav-drawer-container" class="nav-drawer-container">
-      <nav class="nav-menu">
-        <button id="nav-btn-home" class="nav-link active">🏠 Home</button>
-        <button id="nav-btn-analyzer" class="nav-link">🎯 Skill Analyzer</button>
-        <button id="nav-btn-tools" class="nav-link">🛠️ Tools Suite</button>
-      </nav>
+      <div id="nav-drawer-container" class="nav-drawer-container gn-drawer">
+        <nav class="nav-menu gn-nav" aria-label="Main">
+          <button id="nav-btn-home" class="nav-link active">Home</button>
+          <button id="nav-btn-analyzer" class="nav-link">Skill analyzer</button>
+          <button id="nav-btn-tools" class="nav-link">Tools</button>
+        </nav>
 
-      <div class="header-actions">
-        <!-- User Auth Bar -->
-        <div id="auth-buttons-container" class="auth-bar">
-          <button id="open-login-btn" class="btn btn-outline" title="Log into your account">
-            🔐 Log In
-          </button>
-          <button id="open-register-btn" class="btn btn-primary" title="Create a new account">
-            ✨ Register
-          </button>
-        </div>
+        <div class="header-actions gn-actions">
+          <div id="auth-buttons-container" class="auth-bar gn-auth">
+            <button id="open-login-btn" class="gn-text" title="Log in">Log in</button>
+            <button id="open-register-btn" class="gn-cta" title="Create an account">Get started</button>
+          </div>
 
-        <div id="user-profile-bar" class="user-profile-bar" style="display: none;">
-          <div id="user-avatar-chip" class="avatar-chip" title="Click to view/edit profile">
-            <span id="user-avatar-img" class="avatar-img-placeholder">👤</span>
-            <span id="user-display-name" class="user-name-text">Alex Developer</span>
+          <div id="user-profile-bar" class="user-profile-bar" style="display:none;">
+            <div id="user-avatar-chip" class="avatar-chip gn-chip" title="View or edit profile" role="button"
+              tabindex="0">
+              <span id="user-avatar-img" class="avatar-img-placeholder">👤</span>
+              <span id="user-display-name" class="user-name-text">Alex Developer</span>
+            </div>
+          </div>
+
+          <div class="gn-menu-wrap">
+            <button id="workspace-btn" class="gn-text gn-ws" type="button" aria-haspopup="true" aria-expanded="false"
+              aria-controls="workspace-menu">
+              Workspace
+              <svg class="gn-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+            <div id="workspace-menu" class="gn-menu" role="menu">
+              <button id="open-profile-btn" class="gn-item" role="menuitem">Profile &amp; resume</button>
+              <button id="open-history-btn" class="gn-item" role="menuitem">Saved history</button>
+              <button id="open-compare-btn" class="gn-item" role="menuitem">Compare roles</button>
+              <button id="export-report-btn" class="gn-item" role="menuitem">Export report</button>
+              <button id="print-report-btn" class="gn-item" role="menuitem">Print or save as PDF</button>
+              <button id="logout-btn" class="gn-item gn-danger" role="menuitem" style="display:none;">Log out</button>
+            </div>
           </div>
         </div>
+      </div>
 
-        <button id="open-profile-btn" class="btn btn-outline" title="Edit your skill proficiency profile & credentials">
-          👤 Profile & Resume
+      <!-- Kept inside .gn-mobile so main.js ids still exist. Theme icon sits at the far right on desktop. -->
+      <div class="mobile-header-controls gn-mobile">
+        <button id="theme-toggle-btn" class="theme-toggle-btn gn-icon" title="Switch light / dark theme"
+          aria-label="Switch light or dark theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" />
+          </svg>
+          <span class="theme-btn-text gn-sr">Theme</span>
         </button>
-        <button id="open-history-btn" class="btn btn-outline" title="View saved job analyses">
-          📜 History
-        </button>
-        <button id="open-compare-btn" class="btn btn-outline" title="Compare two job descriptions">
-          ⚖️ Compare Roles
-        </button>
-        <button id="export-report-btn" class="btn btn-outline" title="Export analysis report as text file">
-          💾 Export
-        </button>
-        <button id="print-report-btn" class="btn btn-outline" title="Print or save as PDF">
-          🖨️ Print
-        </button>
-
-        <button id="logout-btn" class="btn btn-outline" title="Log out of active account"
-          style="display: none; color: #ef4444; border-color: #ef4444;">
-          🚪 Logout
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle-btn gn-icon" aria-label="Toggle navigation menu"
+          title="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
         </button>
       </div>
     </div>
@@ -106,173 +126,114 @@
   <main id="app-main-content">
 
     <!-- VIEW 1: LANDING & HOME PAGE -->
+    <!-- ============================================================
+  GAPLY HOME VIEW (replaces the whole <div id="view-home"> block in index.html)
+  Keep every id below: js/main.js binds to them.
+  SWAP: copy is marked "SWAP". Sample data in the ledger is demo content.
+============================================================= -->
     <div id="view-home" class="view-section active">
 
-      <!-- Hero Banner -->
-      <section class="hero-section">
-        <div class="hero-container">
-          <div class="hero-badge">✨ AI-Powered Career & Skill Intelligence</div>
-          <h1 class="hero-title">
-            Find the gap. <br />
-            <span class="gradient-text">Build the skill.</span>
-          </h1>
-          <p class="hero-subtitle">
-            Match your developer proficiency against real job postings instantly. Uncover your top skill gaps, track category radar coverage, create targeted learning checklists, and generate ATS resume keywords.
-          </p>
-
-          <div class="hero-actions">
-            <button id="hero-launch-analyzer-btn" class="btn btn-primary btn-lg">
-              🚀 Launch Skill Gap Analyzer
-            </button>
-            <button id="hero-open-resume-btn" class="btn btn-outline btn-lg">
-              📄 Upload & Preview Resume
-            </button>
-            <button id="hero-compare-roles-btn" class="btn btn-outline btn-lg">
-              ⚖️ Compare Two Roles
-            </button>
+      <!-- HERO -->
+      <section class="gh-hero">
+        <div class="gh-hero-copy">
+          <!-- SWAP: headline -->
+          <h1 class="gh-title">Paste a job description. See which of your skills it's missing.</h1>
+          <!-- SWAP: lead -->
+          <p class="gh-lead">Gaply reads the posting, compares it with your skill ratings, and lists what to learn
+            first.</p>
+          <div class="gh-actions">
+            <!-- SWAP: CTA labels -->
+            <button id="hero-launch-analyzer-btn" class="gh-btn">Analyze a job description</button>
+            <button id="hero-open-resume-btn" class="gh-link">Upload your resume</button>
+            <button id="hero-compare-roles-btn" class="gh-link">Compare two roles</button>
           </div>
+        </div>
 
-          <!-- Hero Metrics Bar -->
-          <div class="hero-stats">
-            <div class="stat-card">
-              <span class="stat-value">50+</span>
-              <span class="stat-label">Tech & Soft Skills</span>
+        <!-- Sample analysis: the "gap" shown literally. --have = your level, --need = role level -->
+        <figure class="gh-ledger" aria-label="Sample analysis for a frontend developer role">
+          <figcaption class="gh-ledger-head">Sample analysis: Frontend Developer</figcaption>
+          <ul class="gh-skills">
+            <li><span class="gh-skill">React</span>
+              <span class="gh-bar" style="--have:80%;--need:80%"><i class="gh-need"></i><i class="gh-have"></i></span>
+              <span class="gh-state is-ok">Covered</span>
+            </li>
+            <li><span class="gh-skill">JavaScript</span>
+              <span class="gh-bar" style="--have:90%;--need:80%"><i class="gh-need"></i><i class="gh-have"></i></span>
+              <span class="gh-state is-ok">Covered</span>
+            </li>
+            <li><span class="gh-skill">TypeScript</span>
+              <span class="gh-bar" style="--have:40%;--need:80%"><i class="gh-need"></i><i class="gh-have"></i></span>
+              <span class="gh-state is-gap">2 levels short</span>
+            </li>
+            <li><span class="gh-skill">Unit testing</span>
+              <span class="gh-bar" style="--have:0%;--need:60%"><i class="gh-need"></i><i class="gh-have"></i></span>
+              <span class="gh-state is-gap">Not on your profile</span>
+            </li>
+          </ul>
+        </figure>
+      </section>
+
+      <!-- TOOLS: rows, not cards. Ids kept for js/main.js -->
+      <section id="tools-suite-section" class="gh-section">
+        <h2 class="gh-h2">What's in Gaply</h2>
+        <div class="gh-rows">
+          <article class="gh-row">
+            <div>
+              <h3>Skill gap analyzer</h3>
+              <p>Paste any posting to see the skills it asks for, your match score, and a ranked list of gaps.</p>
             </div>
-            <div class="stat-card">
-              <span class="stat-value">100%</span>
-              <span class="stat-label">Automated Gap Detection</span>
+            <button id="tool-launch-analyzer" class="gh-link">Open analyzer</button>
+          </article>
+          <article class="gh-row">
+            <div>
+              <h3>Resume reader</h3>
+              <p>Upload a PDF, DOCX or TXT resume and Gaply pulls out your skills and contact details.</p>
             </div>
-            <div class="stat-card">
-              <span class="stat-value">4</span>
-              <span class="stat-label">Radar Skill Categories</span>
+            <button id="tool-open-resume" class="gh-link">Manage resume</button>
+          </article>
+          <article class="gh-row">
+            <div>
+              <h3>Role comparison</h3>
+              <p>Put two postings side by side to see which skills they share and which are unique.</p>
             </div>
-            <div class="stat-card">
-              <span class="stat-value">ATS</span>
-              <span class="stat-label">CV Keyword Generator</span>
+            <button id="tool-open-compare" class="gh-link">Compare roles</button>
+          </article>
+          <article class="gh-row">
+            <div>
+              <h3>Saved history</h3>
+              <p>Keep past analyses and check how your match score changes as you learn.</p>
             </div>
-          </div>
+            <button id="tool-open-history" class="gh-link">View history</button>
+          </article>
         </div>
       </section>
 
-      <!-- Tools Suite Grid Section -->
-      <section id="tools-suite-section" class="tools-section">
-        <div class="section-header">
-          <h2 class="section-title">🛠️ Comprehensive Developer Tools Suite</h2>
-          <p class="section-subtitle">Everything you need to analyze job requirements, optimize your CV, and upskill intelligently.</p>
-        </div>
-
-        <div class="tools-grid">
-
-          <!-- Tool Card 1: Skill Gap Analyzer -->
-          <div class="tool-card feature-active">
-            <div class="tool-badge active">Core Tool</div>
-            <div class="tool-icon">🎯</div>
-            <h3 class="tool-title">Skill Gap Analyzer</h3>
-            <p class="tool-desc">
-              Paste any job description to extract required skills, compute match percentages, and view color-coded extraction previews.
-            </p>
-            <button id="tool-launch-analyzer" class="btn btn-primary btn-sm tool-action-btn">
-              Launch Analyzer →
-            </button>
-          </div>
-
-          <!-- Tool Card 2: Resume Parser & Visual Preview -->
-          <div class="tool-card feature-active">
-            <div class="tool-badge active">Active</div>
-            <div class="tool-icon">📄</div>
-            <h3 class="tool-title">Resume Parser & Visual Viewer</h3>
-            <p class="tool-desc">
-              Upload PDF, DOCX, or TXT resumes. Auto-extract credentials and view your actual PDF document layout in the visual viewer.
-            </p>
-            <button id="tool-open-resume" class="btn btn-outline btn-sm tool-action-btn">
-              Manage Resume →
-            </button>
-          </div>
-
-          <!-- Tool Card 3: Role Comparison Engine -->
-          <div class="tool-card feature-active">
-            <div class="tool-badge active">Active</div>
-            <div class="tool-icon">⚖️</div>
-            <h3 class="tool-title">Role Comparison Engine</h3>
-            <p class="tool-desc">
-              Compare two job descriptions side-by-side to detect shared vs unique skill requirements across target roles.
-            </p>
-            <button id="tool-open-compare" class="btn btn-outline btn-sm tool-action-btn">
-              Compare Roles →
-            </button>
-          </div>
-
-          <!-- Tool Card 4: History & Progress Tracker -->
-          <div class="tool-card feature-active">
-            <div class="tool-badge active">Active</div>
-            <div class="tool-icon">📜</div>
-            <h3 class="tool-title">Saved History & Reports</h3>
-            <p class="tool-desc">
-              Save job analyses to history, track match scores over time, and export candidate report text files for documentation.
-            </p>
-            <button id="tool-open-history" class="btn btn-outline btn-sm tool-action-btn">
-              View History →
-            </button>
-          </div>
-
-          <!-- Tool Card 5: AI Mock Interview Simulator (Future) -->
-          <div class="tool-card feature-future">
-            <div class="tool-badge future">Coming Soon</div>
-            <div class="tool-icon">🤖</div>
-            <h3 class="tool-title">AI Mock Interview Coach</h3>
-            <p class="tool-desc">
-              Practice role-specific technical and behavioral interview questions based on your detected skill gaps.
-            </p>
-            <span class="tool-status-tag">In Development</span>
-          </div>
-
-          <!-- Tool Card 6: Upskilling Roadmap Generator (Future) -->
-          <div class="tool-card feature-future">
-            <div class="tool-badge future">Coming Soon</div>
-            <div class="tool-icon">🗺️</div>
-            <h3 class="tool-title">Personalized Upskilling Roadmap</h3>
-            <p class="tool-desc">
-              Receive curated learning paths, recommended tutorials, and estimated time-to-mastery for target positions.
-            </p>
-            <span class="tool-status-tag">In Development</span>
-          </div>
-
-        </div>
+      <!-- HOW IT WORKS: a real sequence, so numbering is justified -->
+      <section class="gh-section">
+        <h2 class="gh-h2">How it works</h2>
+        <ol class="gh-steps">
+          <li>
+            <h3>Paste a posting</h3>
+            <p>Copy text from any job board, or load a sample role.</p>
+          </li>
+          <li>
+            <h3>Gaply finds the skills</h3>
+            <p>Languages, tools, concepts and soft skills, marked must-have or nice-to-have.</p>
+          </li>
+          <li>
+            <h3>Work through your gaps</h3>
+            <p>Get your match score, a learning checklist and keywords for your CV.</p>
+          </li>
+        </ol>
+        <!-- SWAP + VERIFY: confirm js/ makes no network calls with resume data before keeping this claim -->
+        <p class="gh-note">Resumes and saved analyses stay in this browser's local storage.</p>
       </section>
 
-      <!-- How It Works Section -->
-      <section class="workflow-section">
-        <div class="section-header">
-          <h2 class="section-title">🚀 How Gaply Works in 3 Simple Steps</h2>
-        </div>
-        <div class="workflow-grid">
-          <div class="step-card">
-            <div class="step-number">01</div>
-            <h3>Paste Job Description</h3>
-            <p>Paste text from any job board or load one of our built-in sample role descriptions.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">02</div>
-            <h3>Automatic Skill Extraction</h3>
-            <p>Gaply scans languages, frameworks, concepts, and soft skills with context-aware sentiment.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">03</div>
-            <h3>Bridge Your Gaps</h3>
-            <p>Get your match score, category radar chart, learning checklist, and tailored CV keywords.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Home Footer -->
-      <footer class="app-footer">
-        <div class="footer-brand">
-          <img src="images/logo_img.png" alt="Gaply Logo" class="footer-logo" />
-          <span><strong>Gaply</strong> — Find the gap. Build the skill.</span>
-        </div>
-        <p class="footer-copy">© 2026 Gaply Platform. All rights reserved.</p>
+      <footer class="gh-footer">
+        <span class="gh-footer-brand"><img src="images/logo_img.png" alt="" width="22" height="22" loading="lazy" />
+          Gaply</span>
+        <span>© 2026 Gaply. Find the gap. Build the skill.</span>
       </footer>
-
     </div>
 
     <!-- VIEW 2: SKILL GAP ANALYZER APPLICATION -->
@@ -328,7 +289,8 @@
             <h2 id="preview-panel-heading" class="panel-title">
               <span>🔍</span> Skill Extraction Preview
             </h2>
-            <button id="toggle-highlights-btn" class="btn btn-sm btn-outline active" title="Toggle skill color highlights">
+            <button id="toggle-highlights-btn" class="btn btn-sm btn-outline active"
+              title="Toggle skill color highlights">
               👁️ Highlights ON
             </button>
           </div>
@@ -338,7 +300,8 @@
             aria-label="Highlighted Job Description text preview">
             <div class="empty-state">
               <p class="empty-title">Highlighted preview will appear here</p>
-              <p class="empty-desc">As you type or load a job description, extracted skills will be color-coded by category.
+              <p class="empty-desc">As you type or load a job description, extracted skills will be color-coded by
+                category.
               </p>
             </div>
           </div>
@@ -376,7 +339,8 @@
           <!-- Accessible Tabs Navigation -->
           <nav class="tablist-nav">
             <div id="analyzer-tablist" role="tablist" aria-label="Skill Gap Analysis views">
-              <button id="tab-skills" role="tab" aria-selected="true" aria-controls="panel-skills" class="tab-btn active">
+              <button id="tab-skills" role="tab" aria-selected="true" aria-controls="panel-skills"
+                class="tab-btn active">
                 Skills Found
               </button>
               <button id="tab-gaps" role="tab" aria-selected="false" aria-controls="panel-gaps" class="tab-btn">
@@ -752,6 +716,8 @@
   <script src="js/scoring.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/home-motion.js"></script>
+  <script src="js/header-nav.js"></script>
 </body>
 
 </html>
